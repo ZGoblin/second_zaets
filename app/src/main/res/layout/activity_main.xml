@@ -6,13 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <Button
+            android:id="@+id/bSimpleNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simple Notification" />
+
+        <Button
+            android:id="@+id/bNotificationWithAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Action" />
+
+        <Button
+            android:id="@+id/bNotificationWithReply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Reply" />
+
+        <Button
+            android:id="@+id/bNotificationWithProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Progress" />
+
+        <Button
+            android:id="@+id/bOpenActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Activity" />
+
+        <Button
+            android:id="@+id/bMaps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="My university on maps" />
+
+        <Button
+            android:id="@+id/bReceiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test Receiver" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
