@@ -44,7 +44,7 @@
             android:id="@+id/bOpenActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Open Activity" />
+            android:text="Send string and int to another activity" />
 
         <Button
             android:id="@+id/bMaps"

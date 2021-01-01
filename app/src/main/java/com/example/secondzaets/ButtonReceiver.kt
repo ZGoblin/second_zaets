@@ -19,27 +19,27 @@ class ButtonReceiver: BroadcastReceiver() {
             Toast.makeText(context, "$tag - user tap on button", Toast.LENGTH_SHORT).show()
             Log.d(tag, "user tap on button")
         }
+        //Обрабатывает нажатие REPLY в уведомлении
         if (intent?.action == REPLY_ACTION) {
             Log.d(tag, "REPLY_ACTION")
             val string = getMessageText(intent)
             string?.also {
-                Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, string, Toast.LENGTH_LONG).show()
             }
 
-            val repliedNotification = NotificationCompat.Builder(context!!, "MAIN_ACTIVITY")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentText("Processed")
-                .build()
+            context?.also {
+                val builder = NotificationCompat.Builder(it, "MAIN_ACTIVITY")
+                        .setSmallIcon(R.drawable.ic_launcher_foreground)
+                        .setContentText("You say: $string")
 
-// Issue the new notification.
-            NotificationManagerCompat.from(context).apply {
-                this.notify(1, repliedNotification)
+                NotificationManagerCompat.from(it).notify(1, builder.build())
             }
         }
     }
 
-        fun getMessageText(intent: Intent): String? {
-            return RemoteInput.getResultsFromIntent(intent)?.getCharSequence(TEXT_FROM_MESSAGES)
+    fun getMessageText(intent: Intent): String? {
+        return RemoteInput.getResultsFromIntent(intent)
+                ?.getCharSequence(TEXT_FROM_MESSAGES)
                 .toString()
-        }
+    }
 }

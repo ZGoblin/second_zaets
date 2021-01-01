@@ -12,7 +12,7 @@ class ConnectionStateReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         Log.d("receiverMy", "onReceive")
         context?.also {
-            val connManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connManager = it.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork = connManager.activeNetwork
             if (activeNetwork == null) {
                 Toast.makeText(context, "Out of Internet", Toast.LENGTH_SHORT).show()

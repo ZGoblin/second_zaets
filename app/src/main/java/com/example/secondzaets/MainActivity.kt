@@ -80,19 +80,23 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
         NotificationManagerCompat.from(this).notify(1, builder.build())
 
-        var i = 1
-        while (i < 100) {
-            Thread.sleep(1000)
-            i++
+        val runnable = Runnable {
+            var i = 1
+            while (i < 100) {
+                Thread.sleep(200)
+                i++
+                builder
+                        .setProgress(100, i, false)
+                NotificationManagerCompat.from(this).notify(1, builder.build())
+            }
+
             builder
-                .setProgress(100, i, false)
+                    .setContentText("Download complete")
+                    .setProgress(0, 0, false)
             NotificationManagerCompat.from(this).notify(1, builder.build())
         }
 
-        builder
-            .setContentText("Download complete")
-            .setProgress(0, 0, false)
-        NotificationManagerCompat.from(this).notify(1, builder.build())
+        Thread(runnable).start()
     }
 
     private fun sendNotificationWithReply() {
